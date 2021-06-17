@@ -22,21 +22,7 @@ export class Section extends Component {
 
   render() {
     const { good, neutral, bad } = this.state;
-    let Statistic;
 
-    if (this.countTotalFeedback() !== 0) {
-      Statistic = (
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={this.countTotalFeedback()}
-          positivePercentage={this.countPositiveFeedbackPercentage()}
-        ></Statistics>
-      );
-    } else {
-      Statistic = <Notification message="No feedback given"></Notification>;
-    }
     return (
       <section>
         <h1>Please leave feedback</h1>
@@ -45,7 +31,17 @@ export class Section extends Component {
           onLeaveFeedback={this.eventСatcher}
         ></FeedbackOptions>
         <h2>Statistics</h2>
-        {Statistic}
+        {this.countTotalFeedback() !== 0 ? (
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={this.countTotalFeedback()}
+            positivePercentage={this.countPositiveFeedbackPercentage()}
+          />
+        ) : (
+          <Notification message="No feedback given"></Notification>
+        )}
       </section>
     );
   }
