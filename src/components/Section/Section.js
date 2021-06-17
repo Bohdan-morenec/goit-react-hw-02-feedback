@@ -40,7 +40,10 @@ export class Section extends Component {
     return (
       <section>
         <h1>Please leave feedback</h1>
-        <FeedbackOptions options={this.eventСatcher}></FeedbackOptions>
+        <FeedbackOptions
+          options={["good", "neutral", "bad"]}
+          onLeaveFeedback={this.eventСatcher}
+        ></FeedbackOptions>
         <h2>Statistics</h2>
         {Statistic}
       </section>

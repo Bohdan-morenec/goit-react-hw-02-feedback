@@ -1,5 +1,5 @@
 import "./App.css";
-import { Section } from "./Section";
+import { Section } from "./components/Section";
 
 function App() {
   return (
